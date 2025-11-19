@@ -19,6 +19,8 @@ interface LayeredCardProps {
   offset?: string;
   rounded?: string;
   className?: string;
+  cardSize?: string
+  backBgColor?: string
 }
 
 export default function LayeredCard({
@@ -30,6 +32,8 @@ export default function LayeredCard({
   offset = "translate-x-2 translate-y-2",
   rounded = "rounded-none",
   className = "",
+  cardSize="",
+  backBgColor=""
 }: LayeredCardProps) {
   return (
     <div className={clsx("relative group", className)}>
@@ -40,6 +44,8 @@ export default function LayeredCard({
           borderColor,
           hoverBorderColor, 
           backBgHover,
+          backBgColor,
+          cardSize,
           offset
         )}
       />
@@ -47,11 +53,12 @@ export default function LayeredCard({
       {/* FRONT CARD */}
       <div
         className={clsx(
-          "border-3 relative z-10 p-6 transition-colors",
+          "border-3 relative z-10 transition-colors",
           rounded,
           backgroundColor,
           borderColor,
-          hoverBorderColor  
+          hoverBorderColor,
+          cardSize,
         )}
       >
         {children}

@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react"
 import { Button } from "../ui/button"
+import Image from "next/image"
 
 export const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -13,6 +14,17 @@ export const HeroSection = () => {
       setIsPlaying(true)
     }
   }
+
+    const logos = [
+    "/logos/backer-a16z.webp",
+    "/logos/backer-dragonfly.webp",
+    "/logos/backer-elad.webp",
+    "/logos/backer-electric.webp",
+    "/logos/backer-linda.webp",
+    "/logos/backer-sequoia.webp",
+    ]
+
+    const infiniteSlide = [...logos, ...logos, ...logos]
 
   return (
     <section className="max-section flex flex-col">
@@ -48,6 +60,22 @@ export const HeroSection = () => {
               ▶
             </button>
           )}
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-10 items-center justify-center mt-20">
+        <h1 className="uppercase text-[1.2rem]">Founded by veterans and top investors</h1>
+
+        <div className="flex w-screen gap-24 scroll-logos overflow-x-auto overflow-hidden">
+            {infiniteSlide.map((logo, i) => (
+                <Image
+                src={logo}
+                key={i}
+                alt={`Brand logo ${i}`}
+                width={250}
+                height={0}
+                />
+            ))}
         </div>
       </div>
     </section>

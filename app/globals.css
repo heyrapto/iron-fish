@@ -16,6 +16,20 @@ body {
   }
 }
 
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-logos {
+  animation: infinite-scroll 25s linear infinite;
+}
+
+
 /* fonts
 --chakra-fonts-body: FavoritIF, sans-serif;
 --chakra-fonts-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
