@@ -9,3 +9,13 @@ body {
   background-color: var(--color-background);
   color: var(--color-foreground);
 }
+
+@layer utilities {
+  .max-section {
+    @apply mx-auto max-w-[1440px];
+  }
+}
+
+/* fonts
+--chakra-fonts-body: FavoritIF, sans-serif;
+--chakra-fonts-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
