@@ -28,7 +28,7 @@ export const HeroSection = () => {
 
   return (
     <section className="max-section flex flex-col">
-      <div className="flex justify-between w-full mt-30 items-center gap-10">
+      <div className="flex justify-between w-full mt-44 items-center gap-10">
         <div className="flex flex-col max-w-[600px] gap-10">
           <h1 className="text-7xl">Safe Optional Privacy for Any Asset</h1>
           <p className="text-2xl">

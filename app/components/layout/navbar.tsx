@@ -25,7 +25,7 @@ export const Navbar = () => {
         },
     ]
     return (
-        <nav className="flex justify-between border-b-2 items-center px-6 py-3">
+        <nav className="flex fixed w-full bg-white z-999999 justify-between border-b-2 items-center px-6 py-3">
             <Image src="/iron-logo.svg" alt="Logo" width={200} height={200} />
 
             <ul className="flex items-center gap-6">
