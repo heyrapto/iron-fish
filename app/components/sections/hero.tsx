@@ -33,7 +33,7 @@ export const HeroSection = () => {
     ]
 
     // Duplicate logos for seamless infinite scroll - we'll use 2 sets
-    const infiniteSlide = [...logos, ...logos]
+    const infiniteSlide = [...logos, ...logos, ...logos, ...logos]
 
   return (
     <section className="max-section flex flex-col">
