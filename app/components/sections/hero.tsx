@@ -3,7 +3,6 @@
 import { useRef, useState } from "react"
 import { Button } from "../ui/button"
 import Image from "next/image"
-import { FiChevronDown } from "react-icons/fi"
 import { BridgeButton } from "../ui/bridge-btn"
 
 export const HeroSection = () => {
