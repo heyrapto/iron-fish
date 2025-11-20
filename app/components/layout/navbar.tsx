@@ -6,9 +6,12 @@ import { Button } from "../ui/button"
 import { useState } from "react"
 import LayeredCard from "../reusable/layered-card"
 import { navItems } from "@/app/constants"
+import { MobileAccordionItem } from "./mobile-nav"
 
 export const Navbar = () => {
     const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+    const [mobileOpen, setMobileOpen] = useState(false);
+
 
     const hoverColorMap: Record<string, string> = {
         "bg-orange-500": "hover:bg-orange-500",
@@ -24,17 +27,16 @@ export const Navbar = () => {
             <div className="flex-1 md:flex hidden justify-center relative">
                 <ul className="flex items-center gap-6 relative">
                     {navItems.map((n, i) => (
-                        <li 
-                            key={i} 
+                        <li
+                            key={i}
                             className="relative"
                             onMouseEnter={() => n.hasDropdown && setHoveredItem(n.title)}
                             onMouseLeave={() => setHoveredItem(null)}
                         >
-                            <a 
-                                href="" 
-                                className={`flex items-center gap-2 pb-2 transition-all ${
-                                    hoveredItem === n.title ? "border-b-2 border-black" : ""
-                                }`}
+                            <a
+                                href=""
+                                className={`flex items-center gap-2 pb-2 transition-all ${hoveredItem === n.title ? "border-b-2 border-black" : ""
+                                    }`}
                             >
                                 <p className="text-xl">{n.title}</p>
                                 {n.hasDropdown && (
@@ -49,17 +51,17 @@ export const Navbar = () => {
                 {hoveredItem && (() => {
                     const activeNavItem = navItems.find(n => n.title === hoveredItem);
                     if (!activeNavItem?.hasDropdown || !activeNavItem?.dropdownItems) return null;
-                    
+
                     return (
-                        <div 
+                        <div
                             className="absolute top-full left-1/2 transform -translate-x-1/2"
                             onMouseEnter={() => setHoveredItem(hoveredItem)}
                             onMouseLeave={() => setHoveredItem(null)}
                         >
                             <div className="bg-transparent pt-10 w-full"></div>
-                            <LayeredCard 
-                                className="w-[800px] max-h-[500px]" 
-                                backgroundColor="bg-white" 
+                            <LayeredCard
+                                className="w-[800px] max-h-[500px]"
+                                backgroundColor="bg-white"
                                 backBgColor={activeNavItem.color ? `${activeNavItem.color}` : ""}
                             >
                                 <div className={`p-4 ${activeNavItem.grid ? 'grid grid-cols-2 gap-4' : 'grid grid-cols-2 gap-3 w-full'}`}>
@@ -73,10 +75,10 @@ export const Navbar = () => {
                                                 {item.icon}
                                             </div> */}
                                             <Image
-                                            src={item.icon}
-                                            height={80}
-                                            width={80}
-                                            alt="icon"
+                                                src={item.icon}
+                                                height={80}
+                                                width={80}
+                                                alt="icon"
                                             />
                                             <div className="flex-1 min-w-0">
                                                 <h3 className="font-medium text-lg mb-1 group-hover:underline">
@@ -96,16 +98,38 @@ export const Navbar = () => {
             </div>
 
             <div className="md:flex hidden">
-            <Button className="md:flex hidden" type={"button"} icon="arrow" size="lg">
-                Get Started
-            </Button>
+                <Button className="md:flex hidden" type={"button"} icon="arrow" size="lg">
+                    Get Started
+                </Button>
             </div>
 
             <div className="md:hidden flex">
-            <Button type={"button"} size="lg">
-                <BiMenu />
-            </Button>
+                <Button type="button" size="lg" onClick={() => setMobileOpen(!mobileOpen)}>
+                    {mobileOpen ? "✕" : <BiMenu />}
+                </Button>
             </div>
+
+            {mobileOpen && (
+                <div className="absolute top-23 left-1/2 transform -translate-x-1/2 md:hidden w-full bg-white z-9998 h-screen">
+                    <div className="flex flex-col px-4 py-6 gap-6">
+                        {navItems.map((item, index) => (
+                            <LayeredCard
+                                key={index}
+                                backgroundColor="bg-white"
+                                backBgColor={item.color} 
+                                className="w-full"
+                            >
+                                <MobileAccordionItem item={item} />
+                            </LayeredCard>
+                        ))}
+
+                        <Button icon="arrow" size="lg" className="w-full mt-6">
+                            Get Started
+                        </Button>
+                    </div>
+                </div>
+            )}
+
         </nav>
     )
 }

@@ -1,11 +1,11 @@
-interface DropdownItem {
+export interface DropdownItem {
     title: string;
     description: string;
     icon: string;
     href?: string;
 }
 
-interface NavItem {
+export interface NavItem {
     title: string;
     hasDropdown?: boolean;
     color?: string;
