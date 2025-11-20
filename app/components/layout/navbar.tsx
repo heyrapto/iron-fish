@@ -9,7 +9,7 @@ import LayeredCard from "../reusable/layered-card"
 interface DropdownItem {
     title: string;
     description: string;
-    icon: React.ReactNode;
+    icon: string;
     href?: string;
 }
 
@@ -21,75 +21,81 @@ interface NavItem {
     grid?: boolean;
 }
 
-const DocumentationIcon = () => (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="18" fill="#FFD700" stroke="#000" strokeWidth="2"/>
-        <circle cx="20" cy="20" r="8" fill="#000"/>
-        <path d="M12 20 L20 12 L28 20 L20 28 Z" fill="#FFD700" stroke="#000" strokeWidth="1.5"/>
-    </svg>
-);
-
-const GithubIcon = () => (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="8" width="28" height="20" rx="2" fill="#FFD700" stroke="#000" strokeWidth="2"/>
-        <rect x="8" y="10" width="24" height="14" fill="#000"/>
-        <path d="M12 18 Q20 14 28 18" stroke="#FFD700" strokeWidth="2" fill="none"/>
-        <circle cx="16" cy="22" r="1.5" fill="#FFD700"/>
-        <circle cx="24" cy="22" r="1.5" fill="#FFD700"/>
-    </svg>
-);
-
-const FoundationIcon = () => (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="18" fill="#90EE90" stroke="#000" strokeWidth="2"/>
-        <circle cx="20" cy="20" r="10" fill="#006400"/>
-        <path d="M20 10 L24 18 L16 18 Z" fill="#90EE90"/>
-        <path d="M20 30 L16 22 L24 22 Z" fill="#90EE90"/>
-    </svg>
-);
-
-const GovernanceIcon = () => (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="18" fill="#90EE90" stroke="#000" strokeWidth="2"/>
-        <ellipse cx="20" cy="20" rx="12" ry="8" fill="#006400"/>
-        <circle cx="20" cy="20" r="6" fill="#90EE90"/>
-        <path d="M14 16 Q20 12 26 16" stroke="#90EE90" strokeWidth="2" fill="none"/>
-    </svg>
-);
-
-const GrantsIcon = () => (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="18" fill="#90EE90" stroke="#000" strokeWidth="2"/>
-        <ellipse cx="20" cy="20" rx="10" ry="12" fill="#006400"/>
-        <circle cx="20" cy="18" r="4" fill="#90EE90"/>
-        <path d="M18 22 Q20 24 22 22" stroke="#90EE90" strokeWidth="2" fill="none"/>
-    </svg>
-);
-
-const CommunityIcon = () => (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="18" fill="#90EE90" stroke="#000" strokeWidth="2"/>
-        <circle cx="20" cy="20" r="14" fill="#006400"/>
-        <path d="M12 16 Q20 12 28 16" stroke="#90EE90" strokeWidth="2" fill="none"/>
-        <path d="M12 24 Q20 28 28 24" stroke="#90EE90" strokeWidth="2" fill="none"/>
-        <circle cx="16" cy="20" r="2" fill="#90EE90"/>
-        <circle cx="24" cy="20" r="2" fill="#90EE90"/>
-    </svg>
-);
-
 export const Navbar = () => {
     const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
+    const hoverColorMap: Record<string, string> = {
+        "bg-orange-500": "hover:bg-orange-500",
+        "bg-blue-500": "hover:bg-blue-500",
+        "bg-green-500": "hover:bg-green-500",
+        "bg-yellow-500": "hover:bg-yellow-500",
+    };
 
     const navItems: NavItem[] = [
         {
             title: "Use",
             hasDropdown: true,
-            color: "bg-orange-500"
+            color: "bg-orange-500",
+            grid: true,
+            dropdownItems: [
+                {
+                    title: "Node App",
+                    description: "Download our desktop node application.",
+                    icon: "/images/use-key-fish.svg"
+                },
+                {
+                    title: "Mine",
+                    description: "Learn how to mine $IRON.",
+                    icon: "/images/use-strangely-normal-looking-fish.svg"
+                },
+                {
+                    title: "Ecosystem",
+                    description: "Our vast ecosystem offers diverse apps and integrations to choose from.",
+                    icon: "/images/use-ecosystem.svg"
+                },
+                {
+                    title: "Node CLI",
+                    description: "Run Iron Fish in the terminal.",
+                    icon: "/images/use-key-fish.svg"
+                },
+                {
+                    title: "Block Explorer",
+                    description: "Track network activity on our encrypted Block Explorer.",
+                    icon: "/images/use-block.svg"
+                },
+                {
+                    title: "Ledger App",
+                    description: "Use Iron Fish on Ledger.",
+                    icon: "/images/use-ledger.svg"
+                }
+            ]
         },
         {
             title: "Learn",
             hasDropdown: true,
-            color: "bg-blue-500"
+            color: "bg-blue-500",
+            dropdownItems: [
+                {
+                    title: "Get Started",
+                    description: "Everything you need to start using Iron Fish.",
+                    icon: "/images/learn-book-fish.svg"
+                },
+                {
+                    title: "FAQ",
+                    description: "You've got questions, we've got answers.",
+                    icon: "/images/learn-mag-glass.svg"
+                },
+                {
+                    title: "Whitepaper",
+                    description: "A comprehensive review of the technology behind Iron Fish.",
+                    icon: "/images/learn-whitepaper.svg"
+                },
+                {
+                    title: "Tokenomics",
+                    description: "An overview of token distribution and allocations.",
+                    icon: "/images/learn-tokenomics.svg"
+                }
+            ]
         },
         {
             title: "Community",
@@ -100,22 +106,22 @@ export const Navbar = () => {
                 {
                     title: "Foundation",
                     description: "Guiding Iron Fish towards premier crypto privacy.",
-                    icon: <FoundationIcon />
+                    icon: "/images/community-foundation.svg"
                 },
                 {
                     title: "Governance",
                     description: "How the Iron Fish protocol is governed.",
-                    icon: <GovernanceIcon />
+                    icon: "/images/community-governance.svg"
                 },
                 {
                     title: "Grants",
                     description: "Apply for funding with projects that improve our ecosystem.",
-                    icon: <GrantsIcon />
+                    icon:"/images/community-grants.svg"
                 },
                 {
                     title: "Our Community",
                     description: "Keep up with the latest from the Iron Fish community.",
-                    icon: <CommunityIcon />
+                    icon: "/images/community-earth.svg"
                 }
             ]
         },
@@ -127,12 +133,12 @@ export const Navbar = () => {
                 {
                     title: "Documentation",
                     description: "Reference materials for builders.",
-                    icon: <DocumentationIcon />
+                    icon: "/images/dev-blowfish.svg"
                 },
                 {
                     title: "Github",
                     description: "The open-source Iron Fish repository.",
-                    icon: <GithubIcon />
+                    icon: "images/dev-tv-fish.svg"
                 }
             ]
         },
@@ -145,61 +151,79 @@ export const Navbar = () => {
         <nav className="flex fixed w-full bg-white z-9999 justify-between border-b-2 items-center px-6 py-3">
             <Image src="/iron-logo.svg" alt="Logo" width={200} height={200} />
 
-            <ul className="flex items-center gap-6 relative">
-                {navItems.map((n, i) => (
-                    <li 
-                        key={i} 
-                        className="relative"
-                        onMouseEnter={() => n.hasDropdown && setHoveredItem(n.title)}
-                        onMouseLeave={() => setHoveredItem(null)}
-                    >
-                        <a 
-                            href="" 
-                            className={`flex items-center gap-2 pb-2 transition-all ${
-                                hoveredItem === n.title ? "border-b-2 border-black" : ""
-                            }`}
+            <div className="flex-1 flex justify-center relative">
+                <ul className="flex items-center gap-6 relative">
+                    {navItems.map((n, i) => (
+                        <li 
+                            key={i} 
+                            className="relative"
+                            onMouseEnter={() => n.hasDropdown && setHoveredItem(n.title)}
+                            onMouseLeave={() => setHoveredItem(null)}
                         >
-                            <p className="text-xl">{n.title}</p>
-                            {n.hasDropdown && (
-                                <BiChevronDown className="w-5 h-5" />
-                            )}
-                        </a>
+                            <a 
+                                href="" 
+                                className={`flex items-center gap-2 pb-2 transition-all ${
+                                    hoveredItem === n.title ? "border-b-2 border-black" : ""
+                                }`}
+                            >
+                                <p className="text-xl">{n.title}</p>
+                                {n.hasDropdown && (
+                                    <BiChevronDown className="w-5 h-5" />
+                                )}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
 
-                        {hoveredItem === n.title && n.hasDropdown && n.dropdownItems && (
-                            <div className="absolute">
-                                <div className="bg-transparent pt-10 w-full"></div>
-                                <LayeredCard 
-                                    className="w-[800px]" 
-                                    backgroundColor="bg-white" 
-                                    backBgColor={n.color ? `${n.color}` : ""}
-                                >
-                                    <div className={`p-4 ${n.grid ? 'grid grid-cols-2 gap-4' : 'flex flex-row gap-3 w-full'}`}>
-                                        {n.dropdownItems.map((item, idx) => (
-                                            <a
-                                                key={idx}
-                                                href={item.href || "#"}
-                                                className={`flex items-start gap-3 p-3 hover:bg-${n.color} rounded transition-colors group`}
-                                            >
-                                                <div className="shrink-0 mt-1">
-                                                    {item.icon}
-                                                </div>
-                                                <div className="flex-1 min-w-0">
-                                                    <h3 className="font-medium text-lg mb-1 group-hover:underline">
-                                                        {item.title}
-                                                    </h3>
-                                                    <p className="text-sm text-gray-600">
-                                                        {item.description}
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        ))}
-                                    </div>
-                                </LayeredCard>
-                            </div>
-                        )}
-                    </li>
-                ))}
-            </ul>
+                {/* Dropdown positioned relative to the ul container - fixed position for all dropdowns */}
+                {hoveredItem && (() => {
+                    const activeNavItem = navItems.find(n => n.title === hoveredItem);
+                    if (!activeNavItem?.hasDropdown || !activeNavItem?.dropdownItems) return null;
+                    
+                    return (
+                        <div 
+                            className="absolute top-full left-1/2 transform -translate-x-1/2"
+                            onMouseEnter={() => setHoveredItem(hoveredItem)}
+                            onMouseLeave={() => setHoveredItem(null)}
+                        >
+                            <div className="bg-transparent pt-10 w-full"></div>
+                            <LayeredCard 
+                                className="w-[800px] max-h-[500px]" 
+                                backgroundColor="bg-white" 
+                                backBgColor={activeNavItem.color ? `${activeNavItem.color}` : ""}
+                            >
+                                <div className={`p-4 ${activeNavItem.grid ? 'grid grid-cols-2 gap-4' : 'grid grid-cols-2 gap-3 w-full'}`}>
+                                    {activeNavItem.dropdownItems.map((item, idx) => (
+                                        <a
+                                            key={idx}
+                                            href={item.href || "#"}
+                                            className={`flex items-start gap-3 p-3 ${activeNavItem.color ? hoverColorMap[activeNavItem.color] || '' : ''} rounded transition-colors group`}
+                                        >
+                                            {/* <div className="shrink-0 mt-1">
+                                                {item.icon}
+                                            </div> */}
+                                            <Image
+                                            src={item.icon}
+                                            height={80}
+                                            width={80}
+                                            alt="icon"
+                                            />
+                                            <div className="flex-1 min-w-0">
+                                                <h3 className="font-medium text-lg mb-1 group-hover:underline">
+                                                    {item.title}
+                                                </h3>
+                                                <p className="text-sm text-gray-600">
+                                                    {item.description}
+                                                </p>
+                                            </div>
+                                        </a>
+                                    ))}
+                                </div>
+                            </LayeredCard>
+                        </div>
+                    );
+                })()}
+            </div>
 
             <Button type={"button"} icon="arrow">
                 Get Started
