@@ -3,11 +3,70 @@
 @theme {
   --color-background: #fff;
   --color-foreground: #000;
+  --font-family-sans: "Favorit", sans-serif;
+}
+
+@font-face {
+  font-family: "Favorit";
+  src: url("/fonts/ABCFavorit-Regular-Trial.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Favorit";
+  src: url("/fonts/ABCFavorit-Light-Trial.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Favorit";
+  src: url("/fonts/ABCFavorit-Medium-Trial.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Favorit";
+  src: url("/fonts/ABCFavorit-Bold-Trial.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Extended versions */
+@font-face {
+  font-family: "FavoritExtended";
+  src: url("/fonts/ABCFavoritExtended-Regular-Trial.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FavoritExtended";
+  src: url("/fonts/ABCFavoritExtended-Medium-Trial.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FavoritExtended";
+  src: url("/fonts/ABCFavoritExtended-Light-Trial.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FavoritExtended";
+  src: url("/fonts/ABCFavoritExtended-Bold-Trial.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
+  font-family: "Favorit", sans-serif !important;
 }
 
 @layer utilities {
@@ -26,7 +85,9 @@ body {
 }
 
 .scroll-logos {
-  animation: infinite-scroll 25s linear infinite;
+  animation: infinite-scroll 30s linear infinite;
+  display: flex;
+  width: fit-content;
 }
 
 
