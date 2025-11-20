@@ -21,15 +21,15 @@ export const WhychooseUsSection = () => {
     ]
     return (
         <section className="max-section min-h-screen">
-            <div className="grid grid-cols-1 gap-px md:grid-cols-[1fr_1fr] my-28">
-            <div className="flex items-start p-10 md:row-span-7">
-                <h2 className="sticky top-20 pt-20 text-6xl">
+            <div className="grid grid-cols-1 gap-px md:grid-cols-[1fr_1fr] md:my-28 my-8 md:px-0 px-6">
+            <div className="flex items-start md:p-10 p-6 md:row-span-7">
+                <h2 className="sticky md:top-20 top-10 md:pt-20 pt-10 md:text-6xl text-4xl">
                 Why Use Iron Fish?
                 </h2>
               </div>
               <div className="flex flex-col gap-16">
               {whyChooseData.map((w, i) => (
-                <LayeredCard key={i} backgroundColor="bg-white" backBgColor="bg-pink-300" backBgHover="group-hover:bg-white" cardSize="w-[450px] h-[600px]">
+                <LayeredCard key={i} backgroundColor="bg-white" backBgColor="bg-pink-300" backBgHover="group-hover:bg-white" cardSize="md:w-[450px] w-full h-[600px]">
                     <div className="flex flex-col p-10 justify-between h-full">
                         <span className="bg-pink-300 w-[40px] inline-flex text-center justify-center rounded-full">{i}/3</span>
 

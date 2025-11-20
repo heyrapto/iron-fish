@@ -12,6 +12,7 @@ interface ButtonProps {
   href?: string;
   fullWidth?: boolean;
   className?: string;
+  size?: 'sm' | 'md' | 'lg';
 }
 
 const icons = {
@@ -32,10 +33,17 @@ export const Button: React.FC<ButtonProps> = ({
   href,
   fullWidth = false,
   className = '',
+  size = 'md',
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center gap-4 px-8 py-4 rounded-full font-medium text-[20px] transition-all duration-200 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] cursor-pointer';
+  const baseStyles = 'inline-flex items-center justify-center gap-4  rounded-full font-medium transition-all duration-200 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] cursor-pointer';
   
   const linkStyles = 'inline-flex items-center gap-2 text-lg font-medium transition-all duration-200 relative group';
+
+  const sizeStyles = {
+    sm: 'px-4 py-2 text-sm',
+    md: 'px-6 py-3 text-base',
+    lg: 'px-8 py-4 text-[20px]',
+  };
   
   const variantStyles = {
     primary: 'bg-[#FFB9E5] hover:bg-pink-400 text-black',
@@ -75,7 +83,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`${baseStyles} ${variantStyles[variant]} ${widthStyle} ${className}`}
+      className={`${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${widthStyle} ${className}`}
       onClick={onClick}
     >
       {iconElement && iconPosition === 'left' && iconElement}

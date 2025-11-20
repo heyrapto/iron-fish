@@ -25,13 +25,13 @@ export const BlogSection = () => {
     ]
     return (
         <section className="bg-[#DF77F3]">
-            <div className="flex flex-col items-center justify-center py-40 max-section">
-                <h1 className="text-7xl">From the Blog</h1>
-                <p className="text-4xl text-center w-[900px] leading-[50px] pt-14">Your go-to hub for all things Iron Fish. Check out our product deep dives, ecosystem highlights, recent news, and so much more.</p>
+            <div className="flex flex-col items-center justify-center md:py-40 py-24 max-section md:px-0 px-6">
+                <h1 className="md:text-7xl text-4xl">From the Blog</h1>
+                <p className="md:text-4xl text-[1.2rem] text-center md:w-[900px] w-full md:leading-[50px] leading-[30px] md:pt-14 pt-10">Your go-to hub for all things Iron Fish. Check out our product deep dives, ecosystem highlights, recent news, and so much more.</p>
 
-                <div className="flex gap-10 py-16">
+                <div className="grid xl:grid-cols-3 grid-cols-1 lg:grid-cols-2 gap-10 py-16">
                     {blogData.map((b, i) => (
-                        <LayeredCard key={i} backgroundColor="bg-white" backBgColor="bg-white" cardSize="w-[500px] h-[700px]" backBgHover="group-hover:bg-[#DF77F3]">
+                        <LayeredCard key={i} backgroundColor="bg-white" backBgColor="bg-white" cardSize="md:w-[430px] w-full h-[570px]" backBgHover="group-hover:bg-[#DF77F3]" rounded="rounded-[10px]">
                             <div className="flex flex-col gap-6">
                                 <div className="border-b-2 w-full">
                                     <Image
@@ -41,17 +41,17 @@ export const BlogSection = () => {
                                         alt="Image"
                                     />
                                 </div>
-                                <div className="p-10">
-                                    <div className="flex flex-col gap-5 w-full">
+                                <div className="px-10">
+                                    <div className="flex flex-col gap-5 md:w-[350px] w-full">
                                         <span className="text-[1rem]">
                                             {b.date}
                                         </span>
 
-                                        <p className="text-4xl">
+                                        <p className="text-3xl font-normal">
                                             {b.headline}
                                         </p>
                                     </div>
-                                    <Button variant="secondary" className="mt-10">
+                                    <Button size="sm" variant="secondary" className="mt-5">
                                         {b.btnText}
                                     </Button>
                                 </div>
@@ -60,7 +60,7 @@ export const BlogSection = () => {
                     ))}
                 </div>
 
-                <Button icon="arrow" variant="secondary">
+                <Button icon="arrow" variant="secondary" size="sm">
                     View All
                 </Button>
             </div>

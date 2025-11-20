@@ -15,7 +15,7 @@ export const NewsCard = ({ date, headline, image }: NewsCardProps) => {
           {date}
         </span>
 
-        <p className="text-2xl group-hover:underline max-w-[500px]">
+        <p className="text-2xl group-hover:underline md:w-[400px] w-[500px]">
           {headline}
         </p>
       </div>

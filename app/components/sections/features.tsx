@@ -41,16 +41,16 @@ export const FeaturesSection = () => {
     ]
     return (
         <section className="bg-black mt-24">
-            <div className="max-section flex flex-col items-center justify-center text-center">
+            <div className="max-section flex flex-col items-center justify-center text-center md:px-0 px-6">
             <div className="flex flex-col gap-[200px] my-28">
                 {featuresData.map((f, i) => (
                     <div className="flex flex-col gap-20" key={i}>
                         <div className="flex flex-col text-center justify-center items-center">
-                        <h1 className="text-white text-6xl font-medium">{f.title}</h1>
-                        <p className="text-gray-400 text-2xl w-[600px] pt-12 text-center">{f.desc}</p>
+                        <h1 className="text-white text-6xl font-light">{f.title}</h1>
+                        <p className="text-gray-300 md:text-2xl text-[1.4rem] md:w-[600px] w-full pt-12 text-center">{f.desc}</p>
                         </div>
 
-                        <div className="flex gap-10">
+                        <div className="flex flex-col md:flex-row gap-10">
                             {f.cards.map((c, i) => (
                                 <FeaturesCard key={i} title={c.cardTitle} desc={c.cardDesc} btnText={c.btnText} image={c.image} />
                             ))}

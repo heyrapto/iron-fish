@@ -37,14 +37,14 @@ export const HeroSection = () => {
 
   return (
     <section className="max-section flex flex-col">
-      <div className="flex justify-between w-full mt-44 items-center gap-10">
+      <div className="flex md:flex-row flex-col justify-between w-full mt-44 items-center gap-10 md:px-0 px-6">
         <div className="flex flex-col max-w-[600px] gap-10">
           <h1 className="text-7xl">Safe Optional Privacy for Any Asset</h1>
           <p className="text-2xl">
             Zero-Knowledge Layer-1 blockchain giving optional privacy to assets on transparent chains
           </p>
           <div className="flex gap-3 items-start">
-            <Button type="button" icon="arrow">
+            <Button type="button" icon="arrow" size="lg">
               Get Started
             </Button>
             
@@ -106,7 +106,7 @@ export const HeroSection = () => {
         )}
       </div>
 
-      <div className="flex flex-col gap-10 items-center justify-center mt-20">
+      <div className="flex flex-col gap-10 items-center text-center justify-center mt-20 md:px-0 px-6">
         <h1 className="uppercase text-[1.2rem]">Founded by veterans and top investors</h1>
 
         <div className="w-screen overflow-hidden relative">

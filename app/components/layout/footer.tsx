@@ -93,7 +93,7 @@ export const Footer = () => {
                 </div>
 
                 {/* Mid-Section - Navigation Columns */}
-                <div className="grid grid-cols-4 gap-8 py-16 border-b border-gray-800">
+                <div className="grid md:grid-cols-4 grid-cols-2 gap-8 py-16 border-b border-gray-800">
                     {/* Use Column */}
                     <div className="flex flex-col gap-4">
                         <h3 className="text-xl font-semibold text-[#FF9500]">Use</h3>
