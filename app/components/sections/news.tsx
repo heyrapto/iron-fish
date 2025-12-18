@@ -24,7 +24,7 @@ export const NewsSection = () => {
             <h1 className="uppercase text-[1.2rem]">Iron Fish in the news</h1>
             <span className="w-full bg-black h-[0.5px] my-10" />
 
-            <div className="flex flex-row gap-10 md:overflow-x-hidden overflow-x-auto md:w-full w-screen">
+            <div className="flex flex-row gap-10 md:overflow-x-hidden overflow-x-auto md:w-full w-screen md:px-0 px-6">
                 {newsReports.map((n, i) => (
                     <NewsCard key={i} date={n.date} headline={n.headline} image={n.image} />
                 ))}
